@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subtraction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f5;
+      color: #333;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #5a5a5a;
+    }
+
+    nav {
+      background-color: #007BFF;
+      padding: 10px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    nav ul li a.disabled {
+      color: #ccc;
+      pointer-events: none;
+      cursor: default;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    table {
+      width: 60%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+    }
+
+    th, td {
+      padding: 15px;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #007BFF;
+      color: white;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #solutionRow {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Addition.html">Addition</a></li>
+      <li><a href="Subtraction.html" class="disabled">Subtraction</a></li>
+    </ul>
+  </nav>
+
+  <h2>Subtraction</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Column 1</th>
+        <th>Column 2</th>
+        <th>Column 3</th>
+        <th>Column 4</th>
+        <th>Column 5</th>
+      </tr>
+    </thead>
+    <tbody id="numberTable">
+      <tr>
+        <td class="row1"></td>
+        <td class="row1"></td>
+        <td class="row1"></td>
+        <td class="row1"></td>
+        <td class="row1"></td>
+      </tr>
+      <tr>
+        <td class="row2"></td>
+        <td class="row2"></td>
+        <td class="row2"></td>
+        <td class="row2"></td>
+        <td class="row2"></td>
+      </tr>
+      <tr id="solutionRow">
+        <td class="solution"></td>
+        <td class="solution"></td>
+        <td class="solution"></td>
+        <td class="solution"></td>
+        <td class="solution"></td>
+      </tr>
+    </tbody>
+  </table>
+  <button onclick="generateNumbers()">Generate Numbers</button>
+  <button onclick="toggleSolution()">Show/Hide Solution</button>
+
+  <script>
+    function generateRandomNumber(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function generateNumbers() {
+      const row1 = document.querySelectorAll('.row1');
+      const row2 = document.querySelectorAll('.row2');
+      const solution = document.querySelectorAll('.solution');
+      
+      for (let i = 0; i < 5; i++) {
+        let num1 = generateRandomNumber(100, 99999); // Ensure a 2-digit to 5-digit number
+        let num2 = generateRandomNumber(10, num1 - 1); // num2 should be less than num1
+        
+        row1[i].textContent = num1;
+        row2[i].textContent = num2;
+        solution[i].textContent = num1 - num2;
+      }
+    }
+
+    function toggleSolution() {
+      const solutionRow = document.getElementById('solutionRow');
+      if (solutionRow.style.display === 'none' || solutionRow.style.display === '') {
+        solutionRow.style.display = 'table-row';
+      } else {
+        solutionRow.style.display = 'none';
+      }
+    }
+
+    // Initialize with random numbers
+    generateNumbers();
+  </script>
+</body>
+</html>
