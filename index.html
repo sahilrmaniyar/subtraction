@@ -29,6 +29,7 @@
       padding: 0;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
     }
 
     nav ul li {
@@ -52,7 +53,8 @@
     }
 
     table {
-      width: 60%;
+      width: 100%;
+      max-width: 600px;
       margin: 20px auto;
       border-collapse: collapse;
       box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
@@ -60,8 +62,9 @@
     }
 
     th, td {
-      padding: 15px;
+      padding: 10px;
       border: 1px solid #ddd;
+      text-align: center;
     }
 
     th {
@@ -97,6 +100,21 @@
     #solutionRow {
       display: none;
     }
+
+    @media (max-width: 600px) {
+      nav ul li {
+        margin: 5px 0;
+      }
+
+      nav ul li a {
+        font-size: 16px;
+      }
+
+      button {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -104,7 +122,7 @@
     <ul>
       <li><a href="https://sahilrmaniyar.github.io/calculationpractise/">Home</a></li>
       <li><a href="https://sahilrmaniyar.github.io/Addition/">Addition</a></li>
-      <li><a href="https://sahilrmaniyar.github.io/Subtraction/" class="disabled">Subtraction</a></li>
+      <li><a href="#" class="disabled">Subtraction</a></li>
     </ul>
   </nav>
 
