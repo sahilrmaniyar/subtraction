@@ -33,7 +33,7 @@
     }
 
     nav ul li {
-      margin: 0 15px;
+      margin: 10px 15px;
     }
 
     nav ul li a {
@@ -52,6 +52,11 @@
       text-decoration: underline;
     }
 
+    .table-container {
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+
     table {
       width: 100%;
       max-width: 600px;
@@ -59,12 +64,14 @@
       border-collapse: collapse;
       box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
       background-color: #fff;
+      table-layout: fixed;
     }
 
     th, td {
       padding: 10px;
       border: 1px solid #ddd;
       text-align: center;
+      word-wrap: break-word;
     }
 
     th {
@@ -103,7 +110,7 @@
 
     @media (max-width: 600px) {
       nav ul li {
-        margin: 5px 0;
+        margin: 5px 10px;
       }
 
       nav ul li a {
@@ -113,6 +120,15 @@
       button {
         padding: 8px 16px;
         font-size: 14px;
+      }
+
+      .table-container {
+        padding: 0 5px;
+      }
+
+      table, th, td {
+        font-size: 14px;
+        padding: 8px;
       }
     }
   </style>
@@ -127,40 +143,42 @@
   </nav>
 
   <h2>Subtraction</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Column 1</th>
-        <th>Column 2</th>
-        <th>Column 3</th>
-        <th>Column 4</th>
-        <th>Column 5</th>
-      </tr>
-    </thead>
-    <tbody id="numberTable">
-      <tr>
-        <td class="row1"></td>
-        <td class="row1"></td>
-        <td class="row1"></td>
-        <td class="row1"></td>
-        <td class="row1"></td>
-      </tr>
-      <tr>
-        <td class="row2"></td>
-        <td class="row2"></td>
-        <td class="row2"></td>
-        <td class="row2"></td>
-        <td class="row2"></td>
-      </tr>
-      <tr id="solutionRow">
-        <td class="solution"></td>
-        <td class="solution"></td>
-        <td class="solution"></td>
-        <td class="solution"></td>
-        <td class="solution"></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+          <th>Column 4</th>
+          <th>Column 5</th>
+        </tr>
+      </thead>
+      <tbody id="numberTable">
+        <tr>
+          <td class="row1"></td>
+          <td class="row1"></td>
+          <td class="row1"></td>
+          <td class="row1"></td>
+          <td class="row1"></td>
+        </tr>
+        <tr>
+          <td class="row2"></td>
+          <td class="row2"></td>
+          <td class="row2"></td>
+          <td class="row2"></td>
+          <td class="row2"></td>
+        </tr>
+        <tr id="solutionRow">
+          <td class="solution"></td>
+          <td class="solution"></td>
+          <td class="solution"></td>
+          <td class="solution"></td>
+          <td class="solution"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <button onclick="generateNumbers()">Generate Numbers</button>
   <button onclick="toggleSolution()">Show/Hide Solution</button>
 
@@ -175,8 +193,8 @@
       const solution = document.querySelectorAll('.solution');
       
       for (let i = 0; i < 5; i++) {
-        let num1 = generateRandomNumber(100, 99999); // Ensure a 2-digit to 5-digit number
-        let num2 = generateRandomNumber(10, num1 - 1); // num2 should be less than num1
+        let num1 = generateRandomNumber(100, 99999);
+        let num2 = generateRandomNumber(10, num1 - 1);
         
         row1[i].textContent = num1;
         row2[i].textContent = num2;
@@ -193,8 +211,8 @@
       }
     }
 
-    // Initialize with random numbers
     generateNumbers();
   </script>
 </body>
 </html>
+
